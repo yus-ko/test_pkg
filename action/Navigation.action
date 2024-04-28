@@ -1,0 +1,8 @@
+# Define the goal
+geometry_msgs/PoseStamped goal_pose
+---
+# Define the result
+bool done
+---
+# Define a feedback message
+nav_msgs/Odometry odom
