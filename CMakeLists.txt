@@ -34,10 +34,11 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(${PROJECT_NAME}_pclfig src/pcl_fig.cpp)
-target_link_libraries(${PROJECT_NAME}_pclfig ${catkin_LIBRARIES})
+add_executable(pcl_fig src/pcl_fig.cpp)
+target_link_libraries(pcl_fig ${catkin_LIBRARIES})
 
-
+add_executable(pso src/pso.cpp)
+target_link_libraries(pso ${catkin_LIBRARIES})
 
 add_executable(adv_action_client src/adv_action_client.cpp)
 add_executable(adv_action_server src/adv_action_server.cpp)
@@ -51,7 +52,5 @@ target_link_libraries(adv_action_client
 target_link_libraries(adv_action_server
   ${catkin_LIBRARIES}
 )
-
-
 
 add_definitions(-std=c++14)
