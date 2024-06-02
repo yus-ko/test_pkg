@@ -1,0 +1,3 @@
+<launch>   
+  <node pkg="test_pkg" type="local_planner" name="local_planner"/>
+</launch>
