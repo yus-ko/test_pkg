@@ -41,12 +41,14 @@ include_directories(
 )
 
 add_executable(pcl_fig src/pcl_fig.cpp)
+add_dependencies(pcl_fig ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(pcl_fig ${catkin_LIBRARIES})
 
 add_executable(pso src/pso.cpp)
 target_link_libraries(pso ${catkin_LIBRARIES})
 
 add_executable(local_planner src/local_planner.cpp)
+add_dependencies(local_planner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(local_planner ${catkin_LIBRARIES})
 
 add_executable(adv_action_client src/adv_action_client.cpp)
