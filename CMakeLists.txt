@@ -57,11 +57,10 @@ add_executable(adv_action_server src/adv_action_server.cpp)
 add_dependencies(adv_action_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(adv_action_server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(adv_action_client
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(adv_action_server
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(adv_action_client ${catkin_LIBRARIES})
+target_link_libraries(adv_action_server ${catkin_LIBRARIES})
+
+add_executable(addr src/addr.cpp)
+target_link_libraries(addr ${catkin_LIBRARIES})
 
 add_definitions(-std=c++14)
