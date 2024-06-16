@@ -1,0 +1,35 @@
+<launch>
+  <arg name="multi_robot"                 default="robot_0"/>
+  <arg name="use_rviz"                    default="true"/>
+  <arg name="frame_id_global"             default="map"/>
+  <arg name="frame_id_odom"               default="$(arg multi_robot)/odom"/>
+  <arg name="frame_id_base_footprint"     default="$(arg multi_robot)/base_footprint"/>
+  <arg name="max_linear_velocity"         default="0.2"/>
+  <arg name="max_angular_velocity"        default="1.0"/>
+  <arg name="topic_scan"                  default="/$(arg multi_robot)/scan"/>
+  <arg name="topic_odom"                  default="/$(arg multi_robot)/odom"/>
+  <arg name="topic_cmd"                   default="/$(arg multi_robot)/cmd_vel"/>
+  <arg name="topic_goal"                  default="/$(arg multi_robot)/goal"/>
+  <arg name="topic_initial_pose"          default="/$(arg multi_robot)/initialpose"/>
+  <arg name="topic_pcl2"                  default="/$(arg multi_robot)/realsense/depth/points"/>
+  <arg name="file_urdf"                   default="$(find turtlebot3_description)/urdf/turtlebot3_waffle_pi.urdf.xacro"/>
+  <arg name="file_rviz"                   default="$(find test_pkg)/rviz/global_planner.rviz"/>
+  <arg name="file_map"                    default="$(find potbot_description)/maps/garage.yaml"/>
+
+  <group ns="$(arg multi_robot)">
+
+    <include file="$(find potbot)/launch/env/remote.launch">
+      <arg name="urdf_file"               default="$(find xacro)/xacro --inorder '$(arg file_urdf)'"/>
+      <arg name="multi_robot_name"        value="$(arg multi_robot)"/>
+    </include>
+
+    <node pkg="tf" type="static_transform_publisher" name="map_tf" args="0 0 0 0 0 0 $(arg frame_id_global) $(arg frame_id_odom) 30" />
+
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg file_map)"/>
+
+    <group if="$(arg use_rviz)">
+      <node pkg="rviz" type="rviz" name="rviz_potbot" required="true" args="-d $(arg file_rviz)"/>
+    </group>
+
+  </group>
+</launch>

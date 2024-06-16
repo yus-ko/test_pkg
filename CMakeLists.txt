@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   potbot_msgs
   tf2_ros
   costmap_2d
-  base_local_planner
 )
 
 generate_dynamic_reconfigure_options(
