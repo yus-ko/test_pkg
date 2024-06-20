@@ -11,7 +11,6 @@
 #include <base_local_planner/trajectory_planner_ros.h>
 #include <visualization_msgs/MarkerArray.h>
 #include <dynamic_reconfigure/server.h>
-#include <test_pkg/local_plannerConfig.h>
 
 class LocalPlanner
 {

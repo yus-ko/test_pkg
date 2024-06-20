@@ -38,7 +38,7 @@
       <arg name="frame_id_robot_base"     value="$(arg frame_id_robot_base)"/>
     </include> -->
 
-    <node pkg="test_pkg" type="plan" name="global_2d_planner" clear_params="true">
+    <!-- <node pkg="test_pkg" type="plan" name="global_2d_planner" clear_params="true">
       <rosparam file="$(arg file_global_planner)" command="load" ns="costmap"/>
       
       <param name="costmap/global_frame"                value="$(arg frame_id_global)"/>
@@ -48,6 +48,23 @@
   
       <param name="costmap/lrf/topic"                   value="$(arg topic_scan)"/>
       <param name="costmap/lrf/sensor_frame"            value="$(arg frame_id_scan)"/>
+  
+      <param name="costmap/robot_base_frame"            value="$(arg frame_id_robot_base)"/>
+    </node> -->
+
+    <node pkg="global_planner" type="planner" name="global_2d_planner" clear_params="true" output="screen">
+      <rosparam file="$(arg file_global_planner)" command="load" ns="costmap"/>
+      
+      <param name="costmap/global_frame"                value="$(arg frame_id_global)"/>
+  
+      <!-- <param name="costmap/state_layer/depth_cloud/topic"           value="$(arg topic_cloud)"/>
+      <param name="costmap/state_layer/depth_cloud/sensor_frame"    value="$(arg frame_id_cloud)"/> -->
+
+      <param name="costmap/obstacle_layer/lrf/topic"                   value="$(arg topic_scan)"/>
+      <param name="costmap/obstacle_layer/lrf/sensor_frame"            value="$(arg frame_id_scan)"/>
+  
+      <param name="costmap/state_layer/lrf/topic"                   value="$(arg topic_scan)"/>
+      <param name="costmap/state_layer/lrf/sensor_frame"            value="$(arg frame_id_scan)"/>
   
       <param name="costmap/robot_base_frame"            value="$(arg frame_id_robot_base)"/>
     </node>
