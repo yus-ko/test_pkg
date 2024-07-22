@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   potbot_msgs
   tf2_ros
   costmap_2d
+  pluginlib
 )
 
 generate_dynamic_reconfigure_options(
@@ -32,10 +33,12 @@ generate_messages(
 )
 
 catkin_package(
-  LIBRARIES potbot_lib
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME} potbot_lib
 )
 
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -61,5 +64,12 @@ include_directories(
 
 # add_executable(addr src/addr.cpp)
 # target_link_libraries(addr ${catkin_LIBRARIES})
+
+add_executable(grad src/grad.cpp)
+target_link_libraries(grad ${catkin_LIBRARIES})
+
+add_executable(show_mesh src/show_mesh.cpp)
+target_link_libraries(show_mesh ${catkin_LIBRARIES})
+
 
 add_definitions(-std=c++14)
