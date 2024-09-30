@@ -71,5 +71,8 @@ target_link_libraries(grad ${catkin_LIBRARIES})
 add_executable(show_mesh src/show_mesh.cpp)
 target_link_libraries(show_mesh ${catkin_LIBRARIES})
 
+add_executable(affine src/affine.cpp)
+target_link_libraries(affine ${catkin_LIBRARIES})
+
 
 add_definitions(-std=c++14)
