@@ -74,5 +74,7 @@ target_link_libraries(show_mesh ${catkin_LIBRARIES})
 add_executable(affine src/affine.cpp)
 target_link_libraries(affine ${catkin_LIBRARIES})
 
+add_executable(plot src/plot.cpp)
+target_link_libraries(plot ${catkin_LIBRARIES})
 
-add_definitions(-std=c++14)
+add_definitions(-std=c++17)
